@@ -81,7 +81,7 @@ class _DemoScreenState extends State<DemoScreen> {
                   //ToastContext.init(context);
                   try {
                     ToastContext().init(context);
-                    Toast.show("${tmp.modelo} - ${tmp.qcodigo} ingresado", duration: Toast.lengthLong, gravity:  Toast.bottom);
+                    //Toast.show("${tmp.modelo} - ${tmp.qcodigo} ingresado", duration: Toast.lengthLong, gravity:  Toast.bottom);
                   } catch (e) {
                     
                   }
