@@ -1,1 +1,1 @@
-const servidorDemo = 'http://wwww.hola.com/';
+const servidorDemo = 'http://172.10.0.59/appapi/api/';

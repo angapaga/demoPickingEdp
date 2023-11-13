@@ -1,19 +1,42 @@
 class Demo {
   final int id;
-  final String modelo;
-  final String qcodigo;
+  final int idmovimiento;
+  final String cbarra;
+  final String estado;
   
   const Demo({
     required this.id,
-    required this.modelo,
-    required this.qcodigo,
+    required this.idmovimiento,
+    required this.cbarra,
+    required this.estado,
   });
 
   factory Demo.fromJson(Map<String, dynamic> json) {
     return Demo(
       id: json['id'] as int,
-      modelo: json['modelo'] as String,
-      qcodigo: json['qcodigo'] as String,
+      idmovimiento: json['idmovimiento'] as int,
+      cbarra: json['cbarra'] as String,
+      estado: json['estado'] as String,
     );
   }
 }
+
+// class DemoListResult {
+//   final int code;
+//   final String message;
+//   final List<Demo> result;
+  
+//   const DemoListResult({
+//     required this.code,
+//     required this.message,
+//     required this.result,
+//   });
+
+//   factory DemoListResult.fromJson(Map<String, dynamic> json) {
+//     return DemoListResult(
+//       code: json['code'] as int,
+//       message: json['message'] as String,
+//       result: json['result'] as List<Demo>,
+//     );
+//   }
+// }

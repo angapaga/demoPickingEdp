@@ -17,4 +17,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/demo/store', [PostController::class, 'store']); //ruta para crear un nuevo demo

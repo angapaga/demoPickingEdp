@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Demo;
 use App\Http\Requests\StoreDemoRequest;
 use App\Http\Requests\UpdateDemoRequest;
+use Illuminate\Http\Request;
 
 class DemoController extends Controller
 {
@@ -31,7 +32,7 @@ class DemoController extends Controller
     {
         //variables de retorno
         $code = 500;
-        $messaje = 'NO';
+        $message = 'NO';
         //
         $contadorErrores = 0;
         $detalleErrores = array();
@@ -39,11 +40,11 @@ class DemoController extends Controller
         //     $contadorErrores = $contadorErrores + 1;
         //     array_push($detalleErrores,"el campo [id] es necesario");
         // }
-        if( is_null( $request->idmovimiento ) || empty( $request->id) ){
+        if( is_null( $request->idmovimiento ) || empty( $request->idmovimiento) ){
             $contadorErrores = $contadorErrores + 1;
-            array_push($detalleErrores,"el campo [id] es necesario <br>");
+            array_push($detalleErrores,"el campo [idmovimiento] es necesario <br> ");
         }
-        if ( is_null( $request->cbarra) || empty( $request->id) ) {
+        if ( is_null( $request->cbarra) || empty( $request->cbarra) ) {
             $contadorErrores = $contadorErrores + 1;
             array_push($detalleErrores,"el campo [cbarra] es necesario <br>");
         }
@@ -55,16 +56,16 @@ class DemoController extends Controller
             $item->save();
             //
             $code = 200;
-            $messaje = 'Ingreso exitoso.';
+            $message = 'Ingreso exitoso.';
         }else{
             $code = 204;
-            $messaje = $detalleErrores;
+            $message = $detalleErrores;
         }
 
         return response()->json([
             'code' => $code,
-            'messaje' => $messaje,
-            'result' => $item,
+            'message' => $message,
+            'result' => [$item],
         ]);
     }
 
@@ -103,20 +104,20 @@ class DemoController extends Controller
     {
         //variables de retorno
         $code = 500;
-        $messaje = 'NO';
+        $message = 'NO';
 
         $items = array();
         try {
-            $items = Demo::where('estado', 'A')->get();
+            $items = Demo::where('estado', 'A')->orderByDesc('id')->get();
             $code = 200;
-            $messaje = 'OK';
+            $message = 'OK';
         } catch (\Throwable $th) {
             $code = 204;
-            $messaje = $th;
+            $message = $th;
         }
         return response()->json([
             'code' => $code,
-            'messaje' => $messaje,
+            'message' => $message,
             'result' => $items,
         ]);
     }

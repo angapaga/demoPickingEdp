@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DemoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/demo/store', [DemoController::class, 'store']); //ruta para crear un nuevo demo
+Route::get('/demo/list_active', [DemoController::class, 'list_active']); //ruta para crear un nuevo demo
