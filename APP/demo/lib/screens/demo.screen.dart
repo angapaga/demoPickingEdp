@@ -50,7 +50,7 @@ class _DemoScreenState extends State<DemoScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Demo'),
       ),
-      body: Column(
+      body: SafeArea(child: Column(
         children: [
           // Input encima del ListView
            Padding(
@@ -118,7 +118,7 @@ class _DemoScreenState extends State<DemoScreen> {
 
           //
         ],
-      ),
+      ),)
     ); //Placeholder();
   }
 }
