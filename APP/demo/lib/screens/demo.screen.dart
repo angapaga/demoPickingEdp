@@ -19,18 +19,18 @@ class _DemoScreenState extends State<DemoScreen> {
   //   });
   // }A
 
-  final List<Demo> listaTemporal = [
-    Demo(id: 1, idmovimiento: 1, cbarra: '0000000001',estado: "A"),
-    Demo(id: 2, idmovimiento: 1, cbarra: '0000000002',estado: "A"),
-    Demo(id: 3, idmovimiento: 1, cbarra: '0000000003',estado: "A"),
-    Demo(id: 4, idmovimiento: 1, cbarra: '0000000004',estado: "A"),
-    Demo(id: 5, idmovimiento: 1, cbarra: '0000000005',estado: "A"),
-    Demo(id: 6, idmovimiento: 1, cbarra: '0000000006',estado: "A"),
-    Demo(id: 7, idmovimiento: 1, cbarra: '0000000007',estado: "A"),
-    Demo(id: 8, idmovimiento: 1, cbarra: '0000000008',estado: "A"),
-    Demo(id: 9, idmovimiento: 1, cbarra: '0000000009',estado: "A"),
-    Demo(id: 10, idmovimiento: 1, cbarra: '0000000010',estado: "A"),
-  ];
+  // final List<Demo> listaTemporal = [
+  //   Demo(id: 1, idmovimiento: 1, cbarra: '0000000001',estado: "A"),
+  //   Demo(id: 2, idmovimiento: 1, cbarra: '0000000002',estado: "A"),
+  //   Demo(id: 3, idmovimiento: 1, cbarra: '0000000003',estado: "A"),
+  //   Demo(id: 4, idmovimiento: 1, cbarra: '0000000004',estado: "A"),
+  //   Demo(id: 5, idmovimiento: 1, cbarra: '0000000005',estado: "A"),
+  //   Demo(id: 6, idmovimiento: 1, cbarra: '0000000006',estado: "A"),
+  //   Demo(id: 7, idmovimiento: 1, cbarra: '0000000007',estado: "A"),
+  //   Demo(id: 8, idmovimiento: 1, cbarra: '0000000008',estado: "A"),
+  //   Demo(id: 9, idmovimiento: 1, cbarra: '0000000009',estado: "A"),
+  //   Demo(id: 10, idmovimiento: 1, cbarra: '0000000010',estado: "A"),
+  // ];
 
   @override
   void initState() {
@@ -64,8 +64,8 @@ class _DemoScreenState extends State<DemoScreen> {
                 print(cbarra);
                 if(cbarra.length ==10){
                   
-                  final id = listaTemporal.length +1 ;
-                  final Demo tmp = Demo(id: id, idmovimiento: 1, cbarra: cbarra, estado: "A");
+                  //final id = listaTemporal.length +1 ;
+                  final Demo tmp = Demo(id: 0, idmovimiento: 1, cbarra: cbarra, estado: "A");
                   setState(() {
                     //listaTemporal.add(tmp);
                     futureDemoStore = storeDemo(tmp);
@@ -82,7 +82,7 @@ class _DemoScreenState extends State<DemoScreen> {
                   }
                    
                   textEditingController.clear();
-                  print('10 caracteres - lista: ${listaTemporal.length}');
+                  //print('10 caracteres - lista: ${listaTemporal.length}');
                   
                 }
               },
@@ -101,10 +101,11 @@ class _DemoScreenState extends State<DemoScreen> {
                   return ListView.builder(
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
+                      Demo item = snapshot.data![index];
                      return  ListTile(
                       leading: CircleAvatar(child: Text('$index')),
-                      title: Text('movimiento: ${listaTemporal[index].idmovimiento}'), //Text(listaTemporal[listaTemporal.length - (index+1)].modelo),
-                      subtitle: Text(listaTemporal[index].cbarra),//Text(listaTemporal[listaTemporal.length - (index+1)].qcodigo),
+                      title: Text('movimiento: ${item.id}'), //Text(listaTemporal[listaTemporal.length - (index+1)].modelo),
+                      subtitle: Text(item.cbarra),//Text(listaTemporal[listaTemporal.length - (index+1)].qcodigo),
                       trailing: IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
                     );
                     },

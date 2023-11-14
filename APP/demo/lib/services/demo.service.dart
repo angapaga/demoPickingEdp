@@ -26,15 +26,25 @@ Future<List<Demo>> getDemo() async {
   }
 }
 
-Future<List<Demo>> storeDemo(Demo item ) async {
-  final response = await http
-      .post(Uri.parse('$servidorDemo/demo/store'), body: json.encode(item) );
+Future<List<Demo>> storeDemo(Demo _item ) async {
 
+  final json = _item.toJson();
+  final jsonString = jsonEncode(json);
+
+  final response = await http
+      .post(Uri.parse('$servidorDemo/demo/store'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      }
+      , body: jsonString );
+  print(response.statusCode);
   if (response.statusCode == 200) {
     final Map<String, dynamic> datatmp = jsonDecode(response.body);
     final List<dynamic> data = datatmp['result'];
     final code = datatmp['code'] as int;
     // final message = datatmp['message'] as int;
+    print(datatmp['message']);
+    print(data);
     if (code==200) {
       List<Demo> lista = data.map((item) => Demo.fromJson(item)).toList();
       return lista;

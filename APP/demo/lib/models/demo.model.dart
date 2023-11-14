@@ -19,6 +19,16 @@ class Demo {
       estado: json['estado'] as String,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'idmovimiento': idmovimiento,
+      'cbarra': cbarra,
+      'estado': cbarra,
+    };
+  }
+
 }
 
 // class DemoListResult {
